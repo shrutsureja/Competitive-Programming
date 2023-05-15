@@ -18,30 +18,59 @@ typedef long double ld;
 #define readvl(v,n) vector<ll> v;fr(n){readl(x);v.pb(x);}
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
+#define sortv(v) sort(v.begin(), v.end())
 const ld PI = 3.14159265358979323846L;
 const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
-
-bool checker(ll n, ll m){
-    if(m==n){
-        return true;
-    }
-    else if(n%3!=0){
-        return false;
-    }
-    else{
-        return checker(n / 3, m) || checker(2 * n / 3, m);
-    }
-}
-
+//
+// NOT SOLVED
+//
 void solve()
 {
     readl(n);
-    readl(m);
-    checker(n, m) ? yes : no;
+    readl(k);
+    readvl(v, n);
+    sortv(v);
+    ll fptr = 0;
+    ll eptr = n - 1;
+    fr(k)
+    {
+        if(v[fptr] + v[fptr+1] < v[eptr])
+            fptr += 2;
+        else {
+            eptr--;
+        }
+    }
+    ll ans = 0;
+    for (int i = fptr; i <= eptr; i++){
+        ans += v[i];
+    }
+    ll ans1 = 0;
+    fr(n-k){
+        ans1 += v[i];
+    }
+    ll ans2 = 0;
+    for (int i = 2 * k; i < n; i++)
+    {
+        ans2 += v[i];
+    }
+    // cout << ans1 << " " << ans2 << endl;
+    cout << max(ans, max(ans1 , ans2)) << endl;
 }
+
+/*
+15 22 12 10 13 11
+
+15 22 12 10 13 11
+
+10 11 12 13 15 22
+0  1  2  3 
+k = 2
+
+12 13 15
+*/
 
 int main()
 {
