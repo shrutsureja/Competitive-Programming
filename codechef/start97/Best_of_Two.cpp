@@ -15,9 +15,9 @@ typedef long double ld;
 #define readl(x) ll x; cin >> x
 #define readvi(v,n) vector<int> v;fr(n){read(x);v.pb(x);}
 #define readvl(v,n) vector<ll> v;fr(n){readl(x);v.pb(x);}
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
 #define p(ans) cout << ans << endl
-#define yes p("YES")
-#define no p("NO")
 const ld PI = 3.14159265358979323846L;
 const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
@@ -26,8 +26,17 @@ using namespace std;
 
 void solve()
 {
-    read(n);
-    
+    readvi(a, 3);
+    readvi(b, 3);
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    int aa = a[2] + a[1];
+    int bb = b[2] + b[1];
+    if(aa > bb)
+        p("Alice");
+    else if(bb > aa) p("Bob");
+    else
+        p("Tie");
 }
 
 int main()

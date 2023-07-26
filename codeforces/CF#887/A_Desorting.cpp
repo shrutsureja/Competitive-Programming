@@ -27,7 +27,29 @@ using namespace std;
 void solve()
 {
     read(n);
-    
+    bool checker = true;
+    vector<int> v(n);
+    fr(n){
+        cin >> v[i];
+        if(i > 0 && v[i] < v[i-1])
+            checker = false;
+    }
+    if(!checker){
+        p(0);
+        return;
+    }
+    int ans = 0;
+    int minDiff = INT_MAX;
+    fe(1,n){
+        minDiff = min(minDiff,(v[i] - v[i-1]));
+        minDiff = abs(minDiff);
+    }
+    if(minDiff == 0){
+        p(1);
+        return;
+    }
+    if(minDiff%2==0) p((minDiff/2) + 1);
+    else p((minDiff + 1) / 2);
 }
 
 int main()

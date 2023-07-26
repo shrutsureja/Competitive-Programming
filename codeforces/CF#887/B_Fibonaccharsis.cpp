@@ -24,10 +24,39 @@ const ll mod = 1000000007;
 
 using namespace std;
 
+bool checkFib(ll upper, ll lower, ll k){
+    int zero = 0;
+    // cout << "----\n";
+    while (k > 0)
+    {
+        if (lower > upper || zero > 1)
+            return false;
+        if(lower == 0) zero++;
+        // cout << lower << " ";
+        int temp = lower;
+        lower = upper - lower;
+        upper = temp;
+        k--;
+    }
+    return true;
+}
+//7 8 15 22
 void solve()
 {
-    read(n);
-    
+    readl(n);
+    readl(k);
+    ll ans = 0;
+    if(k > 3*n){
+        p(0);
+        return;
+    }
+    freq(n / 2, n)
+    {
+        if(checkFib(n,i,k-1)){
+            ans++;
+        }
+    }
+    p(ans);
 }
 
 int main()

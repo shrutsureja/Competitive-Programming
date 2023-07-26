@@ -27,7 +27,12 @@ using namespace std;
 void solve()
 {
     read(n);
-    
+    read(k);
+    readvi(v,n);
+    readvi(w,k);
+    fr(k){
+        p(binary_search(v.begin(),v.end(),w[1]));
+    }
 }
 
 int main()

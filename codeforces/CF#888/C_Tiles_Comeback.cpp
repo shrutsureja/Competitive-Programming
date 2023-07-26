@@ -23,11 +23,48 @@ const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
-
+//solved
 void solve()
 {
     read(n);
-    
+    read(k);
+    vector<int> v(n);
+    map<int, int> m;
+    fr(n){
+        cin >> v[i];
+        m[v[i]]++;
+    }
+    if (k == 1 || (v[0] == v[n - 1] && m[v[0]] >= k) || n == 1 )
+    {
+        yes;
+        return;
+    }
+    if(m[v[0]] < k || m[v[n-1]] < k){
+        no;
+        return;
+    }
+    int strtCount = 0;
+    int lastCount = 0;
+    int last = m[v[n - 1]];
+    // cout<<last<<" "<<strt<<endl;
+    fr(n){
+        if(v[i] == v[n-1])lastCount++;
+        if(v[i] == v[0] && strtCount < k){
+            strtCount++;
+            if (strtCount == k)
+            {
+                if(last - lastCount >= k){
+                    yes;
+                    return;
+                }
+                else{
+                    no;
+                    return;
+                }
+            }
+        }
+    }
+    no;
 }
 
 int main()

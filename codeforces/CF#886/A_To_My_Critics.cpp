@@ -26,8 +26,17 @@ using namespace std;
 
 void solve()
 {
-    read(n);
-    
+    int a ,b ,c;
+    cin >> a >> b >> c;
+    // shorter solution editorial
+    // cout << (a + b + c - min({a, b, c}) >= 10 ? "YES\n" : "NO\n");
+
+
+    // my solution
+    if(a + b >= 10 || b + c >= 10 || a + c >= 10)
+        yes;
+    else
+        no;
 }
 
 int main()

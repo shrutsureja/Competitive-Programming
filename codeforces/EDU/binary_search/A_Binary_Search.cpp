@@ -24,10 +24,40 @@ const ll mod = 1000000007;
 
 using namespace std;
 
+bool binarySearch(const vector<ll>& v, ll x){
+    ll l = 0;
+    ll r = v.size() - 1;
+    while (l <= r)
+    {
+        ll m = (l+r)/2;
+        if(v[m] == x){
+            return true;
+        }
+        else if(v[m] < x){
+            l = m + 1;
+        }
+        else{
+            r = m - 1;
+        }
+    }
+    return false;
+}
+
 void solve()
 {
-    read(n);
-    
+    readl(n);
+    readl(k);
+    readvl(v,n);
+    readvl(w,k);
+    fr(k)
+    {
+        if(binarySearch(v , w[i])){
+            p("YES");
+        }
+        else{
+            p("NO");
+        }
+    }
 }
 
 int main()
@@ -44,12 +74,12 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout << fixed << setprecision(10);
-    int t=1;
-    cin >> t;
-    while (t--)
-    {
+    // int t=1;
+    // cin >> t;
+    // while (t--)
+    // {
         solve();
-    }
+    // }
     // fr(t){
     //     cout << "Case #" << i + 1 << ": ";
     //     solve();

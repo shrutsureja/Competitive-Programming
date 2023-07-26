@@ -24,10 +24,32 @@ const ll mod = 1000000007;
 
 using namespace std;
 
+ll binarySearchClosestLeft(const vector<ll>& v, ll x){
+    // print the maximum index of an array element not greater than the given one. If there are none, print 0
+    ll res = -1;
+    ll l = 0, r = v.size() - 1;
+    while(l <= r){
+        ll m = (l + r) / 2;
+        if(v[m] <= x){
+            res = m;
+            l = m + 1;
+        }
+        else{
+            r = m - 1;
+        }
+    }
+    return res + 1;
+}
+
 void solve()
 {
-    read(n);
-    
+    readl(n);
+    readl(k);
+    readvl(v, n);
+    readvl(w, k);
+    fr(k){
+        p(binarySearchClosestLeft(v, w[i]));
+    }
 }
 
 int main()
@@ -44,12 +66,12 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout << fixed << setprecision(10);
-    int t=1;
-    cin >> t;
-    while (t--)
-    {
+    // int t=1;
+    // cin >> t;
+    // while (t--)
+    // {
         solve();
-    }
+    // }
     // fr(t){
     //     cout << "Case #" << i + 1 << ": ";
     //     solve();

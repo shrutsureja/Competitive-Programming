@@ -15,9 +15,9 @@ typedef long double ld;
 #define readl(x) ll x; cin >> x
 #define readvi(v,n) vector<int> v;fr(n){read(x);v.pb(x);}
 #define readvl(v,n) vector<ll> v;fr(n){readl(x);v.pb(x);}
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
 #define p(ans) cout << ans << endl
-#define yes p("YES")
-#define no p("NO")
 const ld PI = 3.14159265358979323846L;
 const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
@@ -27,7 +27,27 @@ using namespace std;
 void solve()
 {
     read(n);
-    
+    read(k);
+    readvi(v,n);
+    if(n == 1){
+        p(0);
+        return;
+    }
+    sort(v.begin(), v.end());
+    int seq = 1;
+    int ans = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if(abs(v[i] - v[i-1]) <= k){
+            seq++;
+        }
+        else {
+            ans = max(ans, seq);
+            seq = 1;
+        }
+    }
+    ans = max(ans, seq);
+    p(n - ans);
 }
 
 int main()

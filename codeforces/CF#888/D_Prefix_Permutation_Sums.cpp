@@ -23,11 +23,58 @@ const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
-
+//solved
 void solve()
 {
-    read(n);
-    
+    readl(n);
+    readvl(v,n-1);
+    vector<ll> temp = v;
+    map<ll, ll> m;
+    m[temp[0]]++;
+    fe(1, n - 1)
+    {
+        temp[i] = v[i] - v[i-1];
+        if (temp[i] > 2 * n - 1)
+        {
+            no;
+            return;
+        }
+        m[temp[i]]++;
+        if(m[temp[i]] > 3){
+            no;
+            return;
+        }
+    }
+    // fr(temp.size()){
+    //     cout << temp[i] << " ";
+    // }
+    // p("");
+    vector<ll> missNo;
+    freq(1, n){
+        if(m[i] == 0)missNo.pb(i);
+        else {
+            m[i]--;
+        }
+    }
+    // for(auto x  : m){
+    //     cout << x.first << " " << x.second << endl;
+    // }
+    // p("");
+    if(missNo.size() == 1){
+        yes;
+        return;
+    }
+    if(missNo.size() > 2){
+        // p("here");
+        no;
+        return;
+    }
+    if(m[missNo[0] + missNo[1]] == 1){
+        yes;
+        return;
+    }
+        // p("here last");
+    no;
 }
 
 int main()

@@ -23,11 +23,50 @@ const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
+//solved
 
+/* my code space complexity is more
+
+checkout how to reduce it by tourist
+
+    for (int i = 0; i < n; i++) {
+      int h;
+      cin >> h;
+      if (h != H && h % k == H % k && abs(h - H) <= k * (m - 1)) {
+        ans += 1;
+      }
+    }
+
+https://chat.openai.com/share/529d2616-9045-42c1-90ee-dc1159127630
+
+ */
 void solve()
 {
     read(n);
-    
+    read(m);
+    read(k);
+    read(h);
+    vector<int> v(n);
+    fr(n)
+    {
+        cin >> v[i];
+        v[i] = abs(v[i] - h);
+        // cout << v[i] << " ";
+    }
+    // p("");
+    int ans = 0;
+    fr(n){
+        if(v[i]==0)
+            continue;
+        int x = v[i] % k;
+        if(x==0){
+            x = v[i] / k;
+            if(x < m){
+                ans++;
+            }
+        }
+    }
+    p(ans);
 }
 
 int main()

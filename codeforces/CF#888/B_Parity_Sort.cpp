@@ -23,11 +23,48 @@ const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
+//solved
 
+/*
+same logic and better in space complexity solution:
+
+by tourist
+
+    auto b = a;
+    sort(b.begin(), b.end());
+    bool ok = true;
+    for (int i = 0; i < n; i++) {
+      ok &= (a[i] % 2 == b[i] % 2);
+    }
+    cout << (ok ? "YES" : "NO") << '\n';
+
+ */
 void solve()
 {
-    read(n);
-    
+    readl(n);
+    vector<ll> v(n);
+    int even = 0;
+    vector<bool> positionChecker(n, false);//if true, then even
+    fr(n){
+        cin >> v[i];
+        if(v[i]%2==0){
+            even++;
+            positionChecker[i] = true;
+        }
+    }
+    if(even == 0 || even == n){
+        yes;
+        return;
+    }    
+    sort(v.begin(), v.end());
+    fr(n){
+        bool check = v[i] % 2 == 0;//if true then even
+        if(check != positionChecker[i]){
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 int main()
