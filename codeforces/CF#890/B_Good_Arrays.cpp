@@ -7,7 +7,7 @@ typedef long double ld;
 
 #define fr(n) for (int i = 0; i < n; i++)
 #define fe(x,n) for (int i = x; i < n; i++)
-#define freq(x,n) for (int i = x; i <= n; i++)
+// #define freq(x,n) for (int i = x; i <= n; i++)
 #define ll long long int
 #define endl "\n"
 #define pb push_back
@@ -23,43 +23,49 @@ const ld E = 2.71828182845904523536L;
 const ll mod = 1000000007;
 
 using namespace std;
+/* 
 
-void closestElementToRight(const vector<ll>& v, ll x)
-{
-    ll res = -1;
-    ll l = 0;
-    ll r = v.size();
-    ll m;
-    while(l <= r){
-        m = (l + r) / 2;
-        if(v[m] < x)
-        {
-            l = m + 1;
-        }
-        else {
-            res = m;
-            r = m - 1;
-        }
-        if(l >= v.size()){
-            res = v.size();
-            break;
-        }
-    }
-    if (res == -1)
-        p(v.size());
-    else
-        p(res + 1);
-}
-
+1 1 1 2
+1 1 1 1 4
+1 1 1 1 5
+ */
 void solve()
 {
-    readl(n);
-    readl(k);
-    readvl(v, n);
-    readvl(a, k);
-    fr(k){
-        closestElementToRight(v, a[i]);
+  readl(n);
+  map<ll,ll> m;
+  ll sum = 0;
+  fr(n)
+  {
+    readl(x);
+    sum += x;
+    m[x]++;
+  }
+  if ( n == 1 ){
+    no;
+    return;
+  }
+  ll counter = 1;
+  ll minSum = 0;
+  ll i = 1;
+  while (i <= n)
+  {
+    // p(i);
+    ll x = n;
+    if (m.count(counter) > 0){
+      // p("here");
+      x = n - m[counter];
+      minSum += x * counter++;
     }
+    else {
+      minSum += (n - i + 1) * counter;
+    }
+    i += x;
+    if (minSum > sum){
+      break;
+    }
+  }
+  minSum >= sum ? no : yes;
+  // p(" - " << minSum);
 }
 
 int main()
@@ -76,9 +82,9 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout << fixed << setprecision(10);
-    // int t=1;
-    // cin >> t;
-    // while (t--)
+    int t=1;
+    cin >> t;
+    while (t--)
     {
         solve();
     }

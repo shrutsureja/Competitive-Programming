@@ -24,42 +24,24 @@ const ll mod = 1000000007;
 
 using namespace std;
 
-void closestElementToRight(const vector<ll>& v, ll x)
-{
-    ll res = -1;
-    ll l = 0;
-    ll r = v.size();
-    ll m;
-    while(l <= r){
-        m = (l + r) / 2;
-        if(v[m] < x)
-        {
-            l = m + 1;
-        }
-        else {
-            res = m;
-            r = m - 1;
-        }
-        if(l >= v.size()){
-            res = v.size();
-            break;
-        }
-    }
-    if (res == -1)
-        p(v.size());
-    else
-        p(res + 1);
-}
-
 void solve()
 {
-    readl(n);
-    readl(k);
-    readvl(v, n);
-    readvl(a, k);
-    fr(k){
-        closestElementToRight(v, a[i]);
-    }
+  read(n);
+  int odd = 0, even = 0;
+  fr(n){
+    int x;cin>>x;
+    if(x&1)odd++;
+  }
+  even = n - odd;
+  // odd%2==0 and even > 0 yes
+  // odd%2==1 and even > 0 no;
+  // odd%2==1 and even == 0 no;
+  // odd%2==0 and even == 0 yes
+  if(odd&1){
+    no;
+  }
+  else
+    yes;
 }
 
 int main()
@@ -76,9 +58,9 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout << fixed << setprecision(10);
-    // int t=1;
-    // cin >> t;
-    // while (t--)
+    int t=1;
+    cin >> t;
+    while (t--)
     {
         solve();
     }

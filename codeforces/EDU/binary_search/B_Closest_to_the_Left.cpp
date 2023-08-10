@@ -26,7 +26,7 @@ using namespace std;
 
 ll binarySearchClosestLeft(const vector<ll>& v, ll x){
     // print the maximum index of an array element not greater than the given one. If there are none, print 0
-    ll res = -1;
+    ll res = -1;//result
     ll l = 0, r = v.size() - 1;
     while(l <= r){
         ll m = (l + r) / 2;
